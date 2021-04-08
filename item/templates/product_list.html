@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}
+    {{category.name}}
+{% endblock %}
+{% block content %}
+    <h1>{{category.name}}</h1>
+    <table>
+        {% for p in products %}
+        {% thumbnail p.image '100' as im %}
+        <tr>
+            <td><img src="{{ im.url }}"></td>
+            <td>
+                <a href="{{ p.get_absolute_url }}">{{p.name}}</a>
+            </td>
+            <td>${{ p.price }}</td>
+        </tr>
+        {% endthumbnail %}
+        {% endfor %}
+    </table>
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load thumbnail %}
+{% load static %}
+{% block title %} Categories {% endblock %}
+{% block content %}
+    <div id="main" class="item-list">
+        {% if category %}
+            <h1>Categories</h1>
+            {% for c in category %}
+                {% thumbnail c.image '150' as im %}
+                     <div class="item">
+                         <a href="{% url 'item:product_list' catalog_slug=c.catalog.slug category_slug=c.slug %}"><h3>{{ c.name }}</h3>
+                             <img src='{{ im.url }}'>
+                         </a>
+                     </div>
+                {% endthumbnail %}
+            {% endfor %}
+        {% else %}
+            <h2>No items to show</h2>
+        {% endif %}
+{% endblock %}

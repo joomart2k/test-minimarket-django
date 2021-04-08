@@ -1,0 +1,12 @@
+{% extends 'registration/login.html' %}
+{% block title %}Create an account{% endblock %}
+{% block content %}
+    <a href="{% url 'item:catalog' %}"><h3>Back to main page</h3></a>
+    <h1>Create an account</h1>
+    <p>Please, sign up using the following form:</p>
+    <form action="." method="post">
+        {{ form.as_p }}
+        {% csrf_token %}
+        <p><input type="submit" value="Create my account"></p>
+    </form>
+{% endblock %}
